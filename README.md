@@ -19,7 +19,6 @@ Connect your device to your physical machine.  After this is done, you have to l
 
 [VMWare Workstation] With the class VM started, go to VM -> Removable Devices and connect the device to the VM (Disconnect from Host).
 
-
 [VmWare Fusion] With the class VM started, connect your device.  A dialog should pop up asking you if you want to connect this device to the VM.
 
 If you get stuck on this step KB Articles on the above can be found for [Fusion](https://pubs.vmware.com/fusion-4/index.jsp?topic=%2Fcom.vmware.fusion.help.doc%2FGUID-F081AFAF-7DBB-44FA-BC5B-C41928CFBAE1.html) and [Workstation](https://www.vmware.com/support/ws55/doc/ws_devices_usb_connect.html).
@@ -28,14 +27,12 @@ Now you will have to approve this new machine as trusted by your phone so you ca
 
 In a terminal execute:
 
-
 adb reboot bootloader
 
 Your device will now reboot and boot into a special menu.  This is fastboot mode.  This allows us to modify system components such as placing a new kernel, or changing the system image.
 
 #Flash images to the device
 Now that you are in fastboot, you need to unlock the bootloader to make modifications.  This is done by executing:
-
 
 fastboot oem unlock \<your unlock code\>
 
@@ -46,12 +43,9 @@ We have provided images to flash onto your device that make developing and debug
 
 fastboot flash recovery recovery.img
 
-
 fastboot flash boot boot.img
 
-
 fastboot flash system system.img
-
 
 
 #Boot into Recovery and take backups
