@@ -26,7 +26,6 @@ If you get stuck on this step KB Articles on the above can be found for [Fusion]
 Now you will have to approve this new machine as trusted by your phone so you can issue commands through adb.  You should get a notification in the notification menu of your device (scroll down from the top with the device on the home screen).  Approve this machine as trusted.
 
 In a terminal execute:
-
 adb reboot bootloader
 
 Your device will now reboot and boot into a special menu.  This is fastboot mode.  This allows us to modify system components such as placing a new kernel, or changing the system image.
