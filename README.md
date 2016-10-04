@@ -30,6 +30,11 @@ adb reboot bootloader
 Your device will now reboot and boot into a special menu.  This is fastboot mode.  This allows us to modify system components such as placing a new kernel, or changing the system image.
 
 #Flash images to the device
+Now that you are in fastboot, you need to unlock the bootloader to make modifications.  This is done by executing:
+fastboot oem unlock \<your unlock code\>
+
+Fill in your unlock code that you noted down earlier.
+
 We have provided images to flash onto your device that make developing and debugging easy.  Once you are in the fastboot mode flash the following images:
 fastboot flash recovery recovery.img
 fastboot flash boot boot.img
