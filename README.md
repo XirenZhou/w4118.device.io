@@ -12,7 +12,7 @@ This is a very easy step.  After you have started up your device, go into Settin
 Your Huawei device has the bootloader locked by Huawei.  Unlocking the bootloader is required to change the kernel on the device and make other modifications.  This voids the warranty.  The unlocker code can be found [here](https://emui.huawei.com/en/plugin/unlock/index).  You will have to sign up for Huawei Club, after you have signed up for Huawei Club and are logged in you will be able to unlock the bootloader.  The following information is needed: Product Model, Serial Number, IMEI (I had to use IMEI2 to unlock instead of IMEI1), and Product ID.  Instructions on getting the above data is neatly presented on the Huawei website.  Once you have the fastboot unlock code, save it for later.
 
 #Enable developer mode on your device.
-For your device to take commands from ADB, we need to enable developer mode.  This is done by going to Settings->About Phone.  In this menu, find the "Build Number" and tap it 7 times to enable developer mode.  Your phone should inform you that You are now a developer!  Congratulations.
+For your device to take commands from ADB, we need to enable developer mode.  This is done by going to Settings->About Phone.  In this menu, find the "Build Number" and tap it 7 times to enable developer mode.  Your phone should inform you that You are now a developer!  Congratulations. Enable USB debugging to have adb connection.
 
 #Setup udev permission on your VM
 Power on your VM,
@@ -43,7 +43,7 @@ Now that you are in fastboot, you need to unlock the bootloader to make modifica
 ```
 sudo fastboot oem unlock \<your unlock code\>
 ```
-Fill in your unlock code that you noted down earlier. It'll do a factory reset of the device. You'll have to tap the "build number" 7 times again to go to developer mode. and enable Settings->Developer Options->OEM unlock
+Fill in your unlock code that you noted down earlier. It'll do a factory reset of the device. You'll have to tap the "build number" 7 times again to go to developer mode, and enable Settings->Developer Options->OEM unlock. Also please enable USB debugging to have adb connection.
 
 We have provided images to flash onto your device that make developing and debugging easy.  Once you are in the fastboot mode flash the following images located [here](https://drive.google.com/drive/folders/0B8gV4-XkkODsVHoxei1YWkNnMTA?usp=sharing)
 ```
