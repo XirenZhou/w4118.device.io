@@ -37,9 +37,7 @@ sudo fastboot oem unlock \<your unlock code\>
 
 Fill in your unlock code that you noted down earlier.
 
-We have provided images to flash onto your device that make developing and debugging easy.  Once you are in the fastboot mode flash the following images:
-
-[https://drive.google.com/drive/folders/0B8gV4-XkkODsVHoxei1YWkNnMTA?usp=sharing]
+We have provided images to flash onto your device that make developing and debugging easy.  Once you are in the fastboot mode flash the following images located [here](https://drive.google.com/drive/folders/0B8gV4-XkkODsVHoxei1YWkNnMTA?usp=sharing)
 
 fastboot flash recovery recovery.img
 
