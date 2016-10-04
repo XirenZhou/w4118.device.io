@@ -18,7 +18,7 @@ For your device to take commands from ADB, we need to enable developer mode.  Th
 Power on your VM,
 ```
 wget https://raw.githubusercontent.com/W4118/common/master/51-android.rules
-sudo cp 51-android.rules /etc/udev/rules.d
+sudo cp 51-android.rules /etc/udev/rules.d/
 ```
 Reboot the VM
 
