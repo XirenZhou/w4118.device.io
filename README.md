@@ -18,6 +18,8 @@ For your device to take commands from ADB, we need to enable developer mode.  Th
 Connect your device to your physical machine.  After this is done, you have to let VMWare know to connect this device to the VM.  
 
 [VMWare Workstation] With the class VM started, go to VM -> Removable Devices and connect the device to the VM (Disconnect from Host).
+
+
 [VmWare Fusion] With the class VM started, connect your device.  A dialog should pop up asking you if you want to connect this device to the VM.
 
 If you get stuck on this step KB Articles on the above can be found for [Fusion](https://pubs.vmware.com/fusion-4/index.jsp?topic=%2Fcom.vmware.fusion.help.doc%2FGUID-F081AFAF-7DBB-44FA-BC5B-C41928CFBAE1.html) and [Workstation](https://www.vmware.com/support/ws55/doc/ws_devices_usb_connect.html).
@@ -25,20 +27,32 @@ If you get stuck on this step KB Articles on the above can be found for [Fusion]
 Now you will have to approve this new machine as trusted by your phone so you can issue commands through adb.  You should get a notification in the notification menu of your device (scroll down from the top with the device on the home screen).  Approve this machine as trusted.
 
 In a terminal execute:
+
+
 adb reboot bootloader
 
 Your device will now reboot and boot into a special menu.  This is fastboot mode.  This allows us to modify system components such as placing a new kernel, or changing the system image.
 
 #Flash images to the device
 Now that you are in fastboot, you need to unlock the bootloader to make modifications.  This is done by executing:
+
+
 fastboot oem unlock \<your unlock code\>
 
 Fill in your unlock code that you noted down earlier.
 
 We have provided images to flash onto your device that make developing and debugging easy.  Once you are in the fastboot mode flash the following images:
+
+
 fastboot flash recovery recovery.img
+
+
 fastboot flash boot boot.img
+
+
 fastboot flash system system.img
+
+
 
 #Boot into Recovery and take backups
 This is EXTREMELY important.  First reboot your system as normal until you are on the home screen.  With the device connected to the VM, execute
