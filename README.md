@@ -3,7 +3,7 @@
 
 Here are the instructions to get your Huawei Honor 5X device ready to write kernel and userspace code for homework 3 and beyond.
 
-##Caution: If you ignore any of these instructions, or do not go in order you will likely brick your device.  You are responsible for your actions here.
+##Caution: If you ignore any of these instructions, or do not go in order you will likely brick your device.  You are responsible for your actions here.  If you are worried about accidentally bricking the device come see us during office hours.
 
 #Upgrading your device to Android 6
 This is a very easy step.  After you have started up your device, go into Settings -> Updater and install the update.
