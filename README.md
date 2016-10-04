@@ -31,35 +31,38 @@ Connect your device to your physical machine.  After this is done, you have to l
 
 If you get stuck on this step KB Articles on the above can be found for [Fusion](https://pubs.vmware.com/fusion-4/index.jsp?topic=%2Fcom.vmware.fusion.help.doc%2FGUID-F081AFAF-7DBB-44FA-BC5B-C41928CFBAE1.html) and [Workstation](https://www.vmware.com/support/ws55/doc/ws_devices_usb_connect.html).
 
-In a terminal execute:
-```
-adb reboot bootloader
-```
-Now you will have to approve this new machine as trusted by your phone so you can issue this command.  You should get a notification on your device whether you should trust this machine.  Approve this machine.
+#Flash images to the device
+In Settings->Developer Options, enable OEM unlock. Goto fastboot by either
+
++ Poweroff your device. Hold the Volume DOWN button and Power button at the same time until the boot logo shows up. OR
++ ```adb reboot bootloader```
 
 Your device will now reboot and boot into a special menu.  This is fastboot mode.  This allows us to modify system components such as placing a new kernel, or changing the system image.
 
-#Flash images to the device
 Now that you are in fastboot, you need to unlock the bootloader to make modifications.  This is done by executing:
 ```
 sudo fastboot oem unlock \<your unlock code\>
 ```
-Fill in your unlock code that you noted down earlier.
+Fill in your unlock code that you noted down earlier. It'll do a factory reset of the device. You'll have to tap the "build number" 7 times again to go to developer mode. and enable Settings->Developer Options->OEM unlock
 
 We have provided images to flash onto your device that make developing and debugging easy.  Once you are in the fastboot mode flash the following images located [here](https://drive.google.com/drive/folders/0B8gV4-XkkODsVHoxei1YWkNnMTA?usp=sharing)
 ```
 fastboot flash recovery recovery.img
+fastboot reboot
+```
+Once installed you'll be able to boot to TWRP recovery by either
 
-fastboot flash boot boot.img
++ Power off your device, hold both the Volume UP & DOWN key and hold the power button until the boot logo shows up, release the power button and release the Volume buttons.
++ ```adb reboot recovery```
 
-fastboot flash system system.img
+#Install SuperSU
+Download the BETA-SuperSU-v2.74-2-20160519174328.zip file from the aforementioned google drive link. Boot normally and connect your device to computer. Once connected, pull down the android notification bar at the top of the screen, and select "files" in the USB connected section. You should be able to copy the zip to "Internal Storage/Download/". Boot to TWRP by powering off the device fist and holding the keys as described above.
+
+```
+INSTALL -> Select Storage [Internel Storage] -> Download -> BETA-SuperSU...zip -> Zip signature verification -> Swipe to confirm Flash -> WAIT For a Few Seconds -> Reboot System
 ```
 
-#Boot into Recovery and take backups
-This is EXTREMELY important.  First reboot your system as normal until you are on the home screen.  With the device connected to the VM, execute
-```
-adb reboot recovery
-```
-You should enter TWRP (Team Win Recovery Project).  This recovery tool allows us to take backups and restore as needed.  Go into the backup menu and take a backup of the Boot and System partition.  This is done by selecting the "Boot" and "System" option in the checkbox dialog and using the slidebar to take a backup.  After the backup is complete reboot your device to the home screen.
+#Take backups
+Boot to TWRP using either way described above. Go into the backup menu and take a backup of the Boot and System partition.  This is done by selecting the "Boot" and "System" option in the checkbox dialog and using the slidebar to take a backup.  After the backup is complete reboot your device to the home screen.
 
 You're all set!
