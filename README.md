@@ -14,6 +14,14 @@ Your Huawei device has the bootloader locked by Huawei.  Unlocking the bootloade
 #Enable developer mode on your device.
 For your device to take commands from ADB, we need to enable developer mode.  This is done by going to Settings->About Phone.  In this menu, find the "Build Number" and tap it 7 times to enable developer mode.  Your phone should inform you that You are now a developer!  Congratulations.
 
+#Setup udev permission on your VM
+Power on your VM,
+```
+wget https://raw.githubusercontent.com/W4118/common/master/51-android.rules
+sudo cp 51-android.rules /etc/udev/rules.d
+```
+Reboot the VM
+
 #Getting into Fastboot
 Connect your device to your physical machine.  After this is done, you have to let VMWare know to connect this device to the VM.  
 
@@ -24,33 +32,34 @@ Connect your device to your physical machine.  After this is done, you have to l
 If you get stuck on this step KB Articles on the above can be found for [Fusion](https://pubs.vmware.com/fusion-4/index.jsp?topic=%2Fcom.vmware.fusion.help.doc%2FGUID-F081AFAF-7DBB-44FA-BC5B-C41928CFBAE1.html) and [Workstation](https://www.vmware.com/support/ws55/doc/ws_devices_usb_connect.html).
 
 In a terminal execute:
+```
 adb reboot bootloader
-
+```
 Now you will have to approve this new machine as trusted by your phone so you can issue this command.  You should get a notification on your device whether you should trust this machine.  Approve this machine.
 
 Your device will now reboot and boot into a special menu.  This is fastboot mode.  This allows us to modify system components such as placing a new kernel, or changing the system image.
 
 #Flash images to the device
 Now that you are in fastboot, you need to unlock the bootloader to make modifications.  This is done by executing:
-
+```
 sudo fastboot oem unlock \<your unlock code\>
-
+```
 Fill in your unlock code that you noted down earlier.
 
 We have provided images to flash onto your device that make developing and debugging easy.  Once you are in the fastboot mode flash the following images located [here](https://drive.google.com/drive/folders/0B8gV4-XkkODsVHoxei1YWkNnMTA?usp=sharing)
-
+```
 fastboot flash recovery recovery.img
 
 fastboot flash boot boot.img
 
 fastboot flash system system.img
-
+```
 
 #Boot into Recovery and take backups
 This is EXTREMELY important.  First reboot your system as normal until you are on the home screen.  With the device connected to the VM, execute
-
+```
 adb reboot recovery
-
+```
 You should enter TWRP (Team Win Recovery Project).  This recovery tool allows us to take backups and restore as needed.  Go into the backup menu and take a backup of the Boot and System partition.  This is done by selecting the "Boot" and "System" option in the checkbox dialog and using the slidebar to take a backup.  After the backup is complete reboot your device to the home screen.
 
 You're all set!
