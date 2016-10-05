@@ -41,7 +41,7 @@ Your device will now reboot and boot into a special menu.  This is fastboot mode
 
 Now that you are in fastboot, you need to unlock the bootloader to make modifications.  This is done by executing:
 ```
-sudo fastboot oem unlock \<your unlock code\>
+sudo fastboot oem unlock <your unlock code>
 ```
 Fill in your unlock code that you noted down earlier. It'll do a factory reset of the device. You'll have to tap the "build number" 7 times again to go to developer mode, and enable Settings->Developer Options->OEM unlock. Also please enable USB debugging to have adb connection.
 
