@@ -1,5 +1,5 @@
 # Setting up your device
-##W4118 Fall 2016
+##W4118 Fall 2017
 
 Here are the instructions to get your Huawei Honor 5X device ready to write kernel and userspace code for homework 3 and beyond.
 
